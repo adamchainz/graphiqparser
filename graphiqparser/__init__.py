@@ -1,11 +1,17 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+from __future__ import division
+from builtins import zip
+from builtins import range
+from past.utils import old_div
 import pycrfsuite
 import os
 import re
 import warnings
 from collections import OrderedDict
+from metaphone import doublemetaphone
+import string
 
 # the labels available
 LABELS = [
@@ -26,6 +32,9 @@ GROUP_LABEL   = 'NameCollection'                # the XML tag for a group of str
 NULL_LABEL    = 'Null'                          # the null XML tag
 MODEL_FILE    = 'learned_settings.crfsuite'     # filename for the crfsuite settings file
 
+VOWELS_Y = tuple('aeiouy')
+PREPOSITIONS = {'for', 'to', 'of', 'on'}
+
 
 try :
     TAGGER = pycrfsuite.Tagger()
@@ -45,7 +54,7 @@ def parse(raw_string):
     features = tokens2features(tokens)
 
     tags = TAGGER.tag(features)
-    return zip(tokens, tags)
+    return list(zip(tokens, tags))
 
 def tag(raw_string) :
     tagged = OrderedDict()
