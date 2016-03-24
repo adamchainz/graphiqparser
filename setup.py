@@ -4,11 +4,12 @@ except ImportError :
     raise ImportError("setuptools module required, please go to https://pypi.python.org/pypi/setuptools and follow the instructions for installing setuptools")
 
 setup(
-    version='0.1',
+    version='0.2',
     url='',
     description='',
     name='graphiqparser',
     packages=['graphiqparser'],
+    package_data={'graphicparser' : ['learned_settings.crfsuite']},
     license='The MIT License: http://www.opensource.org/licenses/mit-license.php',
     install_requires=['python-crfsuite>=0.7',
                       'lxml',
