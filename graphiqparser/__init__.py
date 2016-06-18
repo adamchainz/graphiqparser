@@ -253,7 +253,7 @@ PARSED TOKENS:    %s
 UNCERTAIN LABEL:  %s
 When this error is raised, it's likely that either (1) the string is not a valid person/corporation name or (2) some tokens were labeled incorrectly
 To report an error in labeling a valid name, open an issue at https://github.com/datamade/probablepeople/issues/new - it'll help us continue to improve probablepeople!
-For more information, see the documentation at http://probablepeople.readthedocs.org/
+For more information, see the documentation at https://probablepeople.readthedocs.io/
         '''%(original_string, parsed_string, repeated_label)
 
         super(RepeatedLabelError, self).__init__(message)
